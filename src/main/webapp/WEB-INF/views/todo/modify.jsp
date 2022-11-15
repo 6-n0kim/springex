@@ -110,19 +110,19 @@
 
                         const formObj = document.querySelector("form")
 
-                        // document.querySelector(".btn-danger").addEventListener("click",function(e) {
-                        //
-                        //     e.preventDefault()
-                        //     e.stopPropagation()
-                        //
-                        //     formObj.action ="/todo/remove"
-                        //     formObj.method ="post"
-                        //
-                        //     formObj.submit()
-                        //
-                        // },false);
-
                         document.querySelector(".btn-danger").addEventListener("click",function(e) {
+
+                            e.preventDefault()
+                            e.stopPropagation()
+
+                            formObj.action ="/todo/remove"
+                            formObj.method ="post"
+
+                            formObj.submit()
+
+                        },false);
+
+                        /*document.querySelector(".btn-danger").addEventListener("click",function(e) {
 
                             e.preventDefault()
                             e.stopPropagation()
@@ -132,7 +132,7 @@
 
                             formObj.submit()
 
-                        },false);
+                        },false);*/
 
 
                         document.querySelector(".btn-primary").addEventListener("click",function(e) {
@@ -147,15 +147,15 @@
 
                         },false);
 
-                        /*document.querySelector(".btn-secondary").addEventListener("click",function(e) {
+                        document.querySelector(".btn-secondary").addEventListener("click",function(e) {
 
                             e.preventDefault()
                             e.stopPropagation()
 
                             self.location = "/todo/list";
 
-                        },false);*/
-
+                        },false);
+/*
                         document.querySelector(".btn-secondary").addEventListener("click",function(e) {
 
                             e.preventDefault()
@@ -163,7 +163,7 @@
 
                             self.location= `/todo/list?${pageRequestDTO.link}`
 
-                        },false);
+                        },false);*/
 
 
                     </script>
