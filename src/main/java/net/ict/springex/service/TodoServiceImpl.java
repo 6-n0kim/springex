@@ -7,6 +7,9 @@ import net.ict.springex.dto.TodoDTO;
 import net.ict.springex.mapper.TodoMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 //데이터베이스를 처리하는 TOdoMapper 와 DTO와 VO 변환을 처리하는 ModelMapper주입
 
 @Service
@@ -23,4 +26,16 @@ public class TodoServiceImpl implements TodoService{
   log.info(todoVO);
   todoMapper.insert(todoVO);
   }
+
+  @Override
+  public List<TodoDTO> getAll() {
+    List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+            .map(vo -> modelMapper.map(vo, TodoDTO.class))
+            .collect(Collectors.toList());
+    return dtoList;
+
+    //List<TodoVO>를 List<TodoDTO>로 변환하는 작업을 stream을 이용하여
+    //각 TodoVO는 map()을 통해서 TodoDTO로 바꾸고 collect()을 이용하여 List<TodoDTO로 묶어준다.
+  }
+
 }
