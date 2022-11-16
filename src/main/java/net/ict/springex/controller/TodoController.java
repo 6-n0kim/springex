@@ -2,6 +2,7 @@ package net.ict.springex.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.ict.springex.dto.PageRequestDTO;
 import net.ict.springex.dto.TodoDTO;
 import net.ict.springex.service.TodoService;
 import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
@@ -25,12 +26,14 @@ public class TodoController {
   private final TodoService todoService;
 
   @RequestMapping("/list")    //최종경로는 /todo/list
-  public void list(Model model) {
+  public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model) {
     log.info("todo list..............");
-    model.addAttribute("dtoList", todoService.getAll());
+    if(bindingResult.hasErrors()){
+      pageRequestDTO = PageRequestDTO.builder().build();
+    }
+    model.addAttribute("responseDTO", todoService.getList(pageRequestDTO));
     //model에는 'dtoList' 이름으로 목록데이터가 담겨 있다.
   }
-
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public void register() {
