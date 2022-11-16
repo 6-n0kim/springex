@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--log 출력시 콘솔창에 어떻게 띄울것인지 형태를 지정한다-->
 <Configuration status="INFO">
     <Appenders>
         <!--콘솔-->
@@ -13,6 +14,10 @@
 
         <logger name="net.ict" level="INFO" additivity="false">
             <appender-ref ref="console"/>
+        </logger>
+
+        <logger name="net.ict.springex.mapper" level="TRACE" additivity="false">
+            <appender-ref ref="console" />
         </logger>
 
         <root level="info" additivity="false">

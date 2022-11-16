@@ -43,13 +43,13 @@ public class TodoMapperTest {
   }*/
 
   @Test
-  public void testGetOne(){
+  public void testGetOne() {
     TodoVO todoVO = todoMapper.selectOne(2L);
     log.info(todoVO);
   }
 
   @Test
-  public void testSelectList(){
+  public void testSelectList() {
     PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
             .page(1)
             .size(10)
@@ -58,5 +58,18 @@ public class TodoMapperTest {
     voList.forEach(vo -> log.info(vo));
   }
 
-
+  @Test
+  public void testSelectSearch() {
+    PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+            .page(1)
+            .size(10)
+            .types(new String[]{"t" ,"w"})
+            .keyword("준영")
+            .finished(false)
+            .from(LocalDate.of(2022, 11, 14))
+            .to(LocalDate.of(2022,11,30))
+            .build();
+    List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+    voList.forEach(vo -> log.info(vo));
+  }
 }

@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import net.ict.springex.dto.PageRequestDTO;
 import net.ict.springex.dto.TodoDTO;
 import net.ict.springex.service.TodoService;
-import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -53,7 +52,7 @@ public class TodoController {
 
     log.info(todoDTO);
     todoService.register(todoDTO);
-    return "redirect:/todo/list";
+    return "/WEB-INF/back/list_backup.jsp";
   }
 
   @GetMapping({"/read", "/modify"})
@@ -67,7 +66,7 @@ public class TodoController {
   public String remove(Long tno, RedirectAttributes redirectAttributes) {
     todoService.remove(tno);
     log.info("삭제 완료 tno " + tno);
-    return "redirect:/todo/list";
+    return "/WEB-INF/back/list_backup.jsp";
   }
 
   @PostMapping("/modify")
@@ -80,7 +79,7 @@ public class TodoController {
     }
     log.info(todoDTO);
     todoService.modify(todoDTO);
-    return "redirect:/todo/list";
+    return "/WEB-INF/back/list_backup.jsp";
   }
 
 }
