@@ -82,34 +82,34 @@
                         <div class="my-4">
                             <div class="float-end">
                                 <button type="button" class="btn btn-primary">Modify</button>
-                                <button type="button" class="btn btn-secondary">List</button>
+                                <button type="button" class="btn btn-secondary" >List</button> <%--onclick="history.go(-1)"--%>
                             </div>
                         </div>
 
                         <script>
-                            document.querySelector(".btn-primary").addEventListener("click", function(e){
-                                self.location = "/todo/modify?tno="+${dto.tno}
-                            },false)
-
-
                             <%--document.querySelector(".btn-primary").addEventListener("click", function(e){--%>
-
-                            <%--    self.location = `/todo/modify?tno=${dto.tno}&${pageRequestDTO.link}`--%>
-
+                            <%--    self.location = "/todo/modify?tno="+${dto.tno}--%>
                             <%--},false)--%>
 
 
+                            document.querySelector(".btn-primary").addEventListener("click", function(e){
 
-                            document.querySelector(".btn-secondary").addEventListener("click", function(e){
-                                self.location = "/todo/list";
+                                self.location = `/todo/modify?tno=${dto.tno}&${pageRequestDTO.link}`
+
                             },false)
 
-                            <%--//목록 페이지로 이동하는 이벤트 처리--%>
-                            <%--document.querySelector(".btn-secondary").addEventListener("click", function(e){--%>
 
-                            <%--    self.location = "/todo/list?${pageRequestDTO.link}"--%>
 
-                            <%--},false)--%>
+                          /*  document.querySelector(".btn-secondary").addEventListener("click", function(e){
+                                self.location = "/todo/list";
+                            },false)*/
+
+                            //목록 페이지로 이동하는 이벤트 처리
+                            document.querySelector(".btn-secondary").addEventListener("click", function(e){
+
+                                self.location = "/todo/list?${pageRequestDTO.link}"
+
+                            },false)
 
                         </script>
 

@@ -52,11 +52,11 @@ public class TodoController {
 
     log.info(todoDTO);
     todoService.register(todoDTO);
-    return "/WEB-INF/back/list_backup.jsp";
+    return "todo/list";
   }
 
   @GetMapping({"/read", "/modify"})
-  public void read(Long tno, Model model) {
+  public void read(PageRequestDTO pageRequestDTO, Long tno, Model model) {
     TodoDTO todoDTO = todoService.getOne(tno);
     log.info(todoDTO);
     model.addAttribute("dto", todoDTO);
@@ -66,7 +66,7 @@ public class TodoController {
   public String remove(Long tno, RedirectAttributes redirectAttributes) {
     todoService.remove(tno);
     log.info("삭제 완료 tno " + tno);
-    return "/WEB-INF/back/list_backup.jsp";
+    return "todo/list";
   }
 
   @PostMapping("/modify")
@@ -79,7 +79,7 @@ public class TodoController {
     }
     log.info(todoDTO);
     todoService.modify(todoDTO);
-    return "/WEB-INF/back/list_backup.jsp";
+    return "todo/list";
   }
 
 }
